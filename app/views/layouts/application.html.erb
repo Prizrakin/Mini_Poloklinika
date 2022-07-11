@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testror</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <div>
+  
+
+
+
+    <%=link_to "Головна", root_path %>
+    <%if can? :index, @user%>
+      <%=link_to "Профіль", profiles_path %>
+      <%if current_user.role == nil%>
+        <%=link_to "Рекомендації", "recommendation/all" %>
+      <%end%>
+      <%=link_to "Вийти", destroy_user_session_path, 'data-turbo-method': :delete%>
+    <%else%>
+      <%= link_to "Увійти", new_user_session_path %>
+      <%= link_to "Зареєструватись", new_user_registration_path %>
+    <%end%>
+  </div>
+
+    <%= yield %>
+
+
+    <div>
+        <p>Гаряча лінія:<br>
+        Телефон - +380999999999</p>
+    </div>
+  </body>
+</html>

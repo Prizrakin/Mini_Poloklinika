@@ -1,0 +1,39 @@
+<h2>Реєстрація</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :Пошта %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "Пошта" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Телефон %><br />
+    <%= f.text_field :phone, autocomplete: "Телефон" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ПІБ %><br />
+    <%= f.text_field :phone, autocomplete: "ПІБ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Пароль %>
+    <% if @minimum_password_length %>
+    <em>(Мінімум <%= @minimum_password_length %> символів)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Підтвердження паролю" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "sign_up", data: {turbo: false} %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

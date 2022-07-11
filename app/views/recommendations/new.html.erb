@@ -1,0 +1,22 @@
+<%if current_user%>
+  <h1>Нова рекомендація</h1>
+  <%= render 'flash'%>
+
+  <%= form_with model: [@reception, @recommendation] do |f| %>
+    
+
+    <div>
+      <%= f.label :"Рекомендація", style: "display: block" %>
+      <%= f.text_field :text %>
+    </div>
+
+    <div>
+      <%= f.submit "Зберегти", data: {turbo: false} %>
+    </div>
+  <% end %>
+  <br>
+
+  <div>
+    <%= link_to "Назад до профелю", profiles_path %>
+  </div>
+<%end%>

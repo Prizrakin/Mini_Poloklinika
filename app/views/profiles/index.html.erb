@@ -1,0 +1,41 @@
+<h1>Профіль</h1>
+<%= render 'flash'%>
+    <div>
+        <%if current_user%>
+            <%if current_user.role == nil%>
+                <% @roles.each do |role| %>
+                    <h3><%=role.title%></h3><br>
+                    <%@users.each do |user| %>
+                        <%if user.role == role.id%>
+                            <div>
+                                <%= user.name %>
+                                Телефон - 
+                                <%= user.phone %>
+                                    <%if Reception.find_by(patient: current_user.id, user_id: user.id, activity: true) == nil and Reception.where(user_id: user.id, activity: true).count <= 10%>
+                                        <%= link_to "Записатись",new_user_reception_path(user)%>
+                                    <%else%>
+                                        - Запис створено
+                                    <%end%>
+                            </div>
+                        <%end%>
+                    <%end%>
+                    <br>
+                <%end%>
+            <%else%>
+                <h3>Записані паціенти: </h3>
+                <%@receptions.each do |reception| %>
+                    <%if reception.user_id == current_user.id and reception.activity == true%>
+                        <div>
+                            <%=User.find(reception.patient).name%>
+                            Телефон - 
+                            <%=User.find(reception.patient).phone%>
+                            <%=link_to "Рекомендація", new_reception_recommendation_path(reception)%>
+                        </div>
+                    <%end%>
+
+                <%end%>
+            <%end%>
+        <%else%>
+            <p>Спочатку потрібно авторизуватись</p>
+        <%end%>
+    </div>

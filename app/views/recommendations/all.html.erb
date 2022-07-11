@@ -1,0 +1,14 @@
+<%if current_user%>
+    <h1>Мої рекомендації</h1>
+    <%@recommendations.each do |recommendation| %>
+        <%if Reception.find(recommendation.reception_id).patient == current_user.id%> 
+            <div>
+                <%=User.find(Reception.find(recommendation.reception_id).user_id).name%>
+                Телефон - 
+                <%=User.find(Reception.find(recommendation.reception_id).user_id).phone%><br>
+                <p>Рекомендація - "<%=recommendation.text%>"</p><br>
+
+            </div>      
+        <%end%>
+    <%end%>
+<%end%>

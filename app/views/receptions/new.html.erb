@@ -1,0 +1,12 @@
+<h1>Запис</h1>
+<%= render 'flash'%>
+<div>
+    <p>Посада - <%= Role.find(@user.role).title%><br>
+    ПІБ - <%=@user.name%><br>
+    Номер телефону  - <%=@user.phone%></p>
+
+        <%= submit_tag "Запис на прийом", data: {turbo: false} %>
+
+
+    
+</div>
