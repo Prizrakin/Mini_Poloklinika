@@ -11,13 +11,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_07_11_180119) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -41,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_180119) do
   create_table "receptions", force: :cascade do |t|
     t.integer "patient"
     t.boolean "activity"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_receptions_on_user_id"
@@ -49,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_180119) do
 
   create_table "recommendations", force: :cascade do |t|
     t.string "text"
-    t.integer "reception_id", null: false
+    t.bigint "reception_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reception_id"], name: "index_recommendations_on_reception_id"
@@ -62,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_180119) do
   end
 
   create_table "user_roles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.index ["role_id"], name: "index_user_roles_on_role_id"
     t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
@@ -74,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_180119) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role_id"
+    t.bigint "role_id"
     t.string "phone"
     t.string "name"
     t.datetime "created_at", null: false
