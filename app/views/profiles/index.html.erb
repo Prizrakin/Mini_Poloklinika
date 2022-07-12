@@ -2,11 +2,11 @@
 <%= render 'flash'%>
     <div>
         <%if current_user%>
-            <%if current_user.role == nil%>
+            <%if current_user.role_id == nil%>
                 <% @roles.each do |role| %>
                     <h3><%=role.title%></h3><br>
                     <%@users.each do |user| %>
-                        <%if user.role == role.id%>
+                        <%if user.role_id == role.id%>
                             <div>
                                 <%= user.name %>
                                 Телефон - 

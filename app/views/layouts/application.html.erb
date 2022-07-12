@@ -19,9 +19,9 @@
 
 
     <%=link_to "Головна", root_path %>
-    <%if can? :index, @user%>
+    <%if current_user%>
       <%=link_to "Профіль", profiles_path %>
-      <%if current_user.role == nil%>
+      <%if current_user.role_id == nil%>
         <%=link_to "Рекомендації", "recommendation/all" %>
       <%end%>
       <%=link_to "Вийти", destroy_user_session_path, 'data-turbo-method': :delete%>

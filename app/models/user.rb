@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :reception
+  has_many :receptions
+  has_one :user_role 
+  has_one :role, through: :user_role
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
