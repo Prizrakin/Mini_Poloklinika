@@ -27,3 +27,7 @@ test:
 production:
   <<: *default
   database: my_database_production
+  username: ejaiolkpvoteyy
+  password: d665406b3f6271a6100492a7666af79e4332588813492d1b098ffdc18371e77f
+  port: 5432
+  host: ec2-54-228-125-183.eu-west-1.compute.amazonaws.com
