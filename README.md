@@ -1,24 +1,10 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h1>Всем привет,это не большорй проект для поликлинники.</h1>
+Он содержит:
+<ul>
+ <li>Авторизацию и регистрацию через Devise</li>
+ <li>Аутентификацию</li>
+ <li>Возможность записаться к врачу на прием</li>
+ <li>Возможность врачу оставить рекомендацию пациенту</li>
+ <li>Использование Active Admin для администрирования врачай и создание должностей</li>
+</ul>
+Сылка на <b>HEROKU</b> - https://testror1207.herokuapp.com 
